@@ -1,0 +1,20 @@
+[TYPE] NUCLEOTIDE 1
+
+[MODEL] root 
+[submodel]    HKY 2.5          // HKY with kappa=2.5
+[statefreq] 0.25 0.25 0.25 0.25
+[MODEL] Try1 
+[submodel]    HKY 2.5          // HKY with kappa=2.5
+[statefreq] 0.25 0.25 0.25 0.25
+[MODEL] Try2 [submodel] UNREST $ 1 $ 1 1 1 1 $ $ 1 1 
+
+//[statefreq] 0.25 0.25 0.25 0.25
+ 
+[TREE] t1 ((Parus_major_1:0.05,Taeniopygia_guttata_1:0.05):0.125,Gallus_gallus_1:0.175);
+
+[BRANCHES] b1 ((Parus_major_1:#Try2,Taeniopygia_guttata_1:#Try1):#Try1,Gallus_gallus_1:#Try1)#root;
+
+[PARTITIONS] Pname1 [t1 b1 50000]
+
+[EVOLVE] Pname1 100 nucleo1
+
